@@ -25,7 +25,7 @@ class TreeGrid extends Component {
       <div>
         <table className="table table-striped table-hover">
           <Header options={this.props.options}/>
-          <Body data={this.props.data} options={this.props.options} /> 
+          <Body data={this.props.data} options={this.props.options} callback={this.props.callback}/> 
         </table>
       </div>
     );

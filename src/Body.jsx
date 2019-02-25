@@ -14,7 +14,6 @@ class Body extends React.Component {
     }
 
     clickHandler(key, index) {
-
         var tempState = this.state.dataToDisplay.slice(0)
 
         tempState[index]._showChildren = !tempState[index]._showChildren
@@ -102,6 +101,7 @@ class Body extends React.Component {
             <Row 
                 key={`row_${i}`}
                 options={this.props.options}
+				callback={this.props.callback}
                 data={elem}
                 level={elem._level}
                 index={i}

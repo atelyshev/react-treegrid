@@ -12,6 +12,12 @@ class Row extends React.Component {
         this.getContent = this.getContent.bind(this)
     }
 
+	callback = (event) => {
+		if(this.props.callback !== undefined) {
+			this.props.callback(this.props.data._key);
+		}
+	}
+	
     getExpandIcon(data, clickHandler) {
         if (data._hasChildren) {
             if (data._showChildren) {
@@ -24,9 +30,10 @@ class Row extends React.Component {
         return <span className="treegrid-expander"></span>
     }
 
-    clickHandler() {
+    clickHandler(event) {
         if (this.props.data._hasChildren) {
-            this.props.onClick(this.props.data._key, this.props.index)
+            this.props.onClick(this.props.data._key, this.props.index);
+			event.stopPropagation();
         }
     }
 
@@ -81,7 +88,7 @@ class Row extends React.Component {
         })
 
         return (
-        <tr>
+        <tr onClick= {this.callback}>
             {items}
         </tr>
         )
