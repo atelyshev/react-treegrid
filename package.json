@@ -1,7 +1,7 @@
 {
-  "name": "react-treegrid",
-  "version": "1.1.2",
-  "description": "React TreeGrid Component",
+  "name": "react-treegrid-2",
+  "version": "1.0.1",
+  "description": "React TreeGrid-2 Component",
   "main": "lib/index.js",
   "scripts": {
     "test": "react-scripts test --env=jsdom",
@@ -33,6 +33,7 @@
   "keywords": [
     "react",
     "treegrid",
+    "treegrid-2",
     "tree",
     "grid"
   ],
