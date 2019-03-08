@@ -3,7 +3,7 @@
 This is improved version of original react-treegrid. I just added row level onClick reaction which makes that grid useful.
 Also added button type as cell contant with callback
 React TreeGrid is a react component built to easily render a table showing the properties of objects in a tree structure.
-
+Sample image:
 https://drive.google.com/file/d/1oItGtDvPLN8Ut8ha6UfCCcqlx3FrF4Gw/view
 
 
