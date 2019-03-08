@@ -1,7 +1,8 @@
-﻿React-GridTree
+﻿React-TreeGrid
 ===================
-This is improved version of original react-gridtree. I just added onClick reaction which makes thhat grid useful.
-React GridTree is a react component built to easily render a table showing the properties of objects in a tree structure.
+This is improved version of original react-treegrid. I just added row level onClick reaction which makes that grid useful.
+Also added button type as cell contant with callback
+React TreeGrid is a react component built to easily render a table showing the properties of objects in a tree structure.
 
 Check out the [example project](https://github.com/PhillBeck/react-gridtree-example) and the [live demo](https://phillbeck.github.io/react-gridtree-example/)
 
@@ -21,7 +22,7 @@ Usage
 
 Example:
 ```
-<GridTree
+<TreeGrid
 	data={[
 		{
 			name: "item 1"
@@ -42,14 +43,24 @@ Example:
 		fields: [
 			{ 
 				property: 'name',
-				displayName: 'Name',
+				colHeader: 'Name',
 				width: '70%' 
 			},
 			{
 				property: 'qty',
-				displayName: 'Quantity',
+				colHeader: 'Quantity',
 				format: (value) => value.toFixed(2)
-			}
+			}, 
+			// Custom field with button
+                        {
+				type: 'button',
+				callback: this.addOrganization,
+				// In case you need internationaliation pass FormattedMessage as header 
+				// and button caption
+				colHeader: <FormattedMessage id="org.edit.type" defaultMessage="Action"/>,
+				caption: <FormattedMessage id="org.edit.type" defaultMessage="Add sub-org"/>,
+				width: '5%'
+                      }
 		]
 	}}
 />
@@ -101,8 +112,18 @@ fields should be an array containing one object for each data property that shou
  - **property** - Required
  The name of the data property (e.g. "name")
  
- - **displayName** - Required
+ - **colHeader** - Required
 The text to be shown on the table header (e.g. "Name")
+
+- **type**
+By default fields have type 'text', but in case button needed specify type: 'button'
+
+- **caption**
+Only applicable for type 'button'
+
+- **callback** 
+Only applicable for type 'button' 
+callback: this.onButtonClick
 
  - **width**
 The width of the column (e.g. "50%")
@@ -115,12 +136,12 @@ options = {
 	fields: [
 		{ 
 			property: 'name',
-			displayName: 'Name',
+			colHeader: 'Name',
 			width: '70%' 
 		},
 		{
 			property: 'qty',
-			displayName: 'Quantity',
+			colHeader: 'Quantity',
 			format: (value) => value.toFixed(2)
 		}
 	]
