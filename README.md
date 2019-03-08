@@ -7,7 +7,7 @@ React TreeGrid is a react component built to easily render a table showing the p
 Check out the [example project](https://github.com/PhillBeck/react-gridtree-example) and the [live demo](https://phillbeck.github.io/react-gridtree-example/)
 
 
-![](https://drive.google.com/file/d/1oItGtDvPLN8Ut8ha6UfCCcqlx3FrF4Gw/view?usp=sharing)
+![](https://drive.google.com/file/d/1oItGtDvPLN8Ut8ha6UfCCcqlx3FrF4Gw/view)
 
 
 Installation
