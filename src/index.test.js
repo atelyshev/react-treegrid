@@ -31,9 +31,9 @@ it('renders without crashing', () => {
     ]}
     options={{
         fields: [
-            {property: 'Header1', displayName: 'Header 1', width: '50%'},
-            {property: 'Header2', displayName: 'Header 2', width: '35%'},
-            {property: 'Header3', displayName: 'Header 3', width: '15%'},
+            {property: 'Header1', colHeader: 'Header 1', width: '50%'},
+            {property: 'Header2', colHeader: 'Header 2', width: '35%'},
+            {property: 'Header3', colHeader: 'Header 3', width: '15%'},
         ]
     }}
     />, div);

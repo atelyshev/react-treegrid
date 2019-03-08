@@ -104,7 +104,7 @@ class Body extends React.Component {
 				callback={this.props.callback}
                 data={elem}
                 level={elem._level}
-                index={i}
+                index={i}				
                 onClick={this.clickHandler.bind(this)}
             />
         )

@@ -8,17 +8,23 @@ class Row extends React.Component {
 
     constructor(props) {
         super(props)
-        this.getExpandIcon = this.getExpandIcon.bind(this)
-        this.getContent = this.getContent.bind(this)
     }
 
 	callback = (event) => {
 		if(this.props.callback !== undefined) {
-			this.props.callback(this.props.data._key);
+			this.props.callback(this.props.data);
+		}
+	}
+
+	btnCallback = (event) => {
+		event.stopPropagation();
+		let i = event.currentTarget.getAttribute('data-col')
+		if (this.props.options.fields[i].callback !== undefined) {
+			this.props.options.fields[i].callback(this.props.data);
 		}
 	}
 	
-    getExpandIcon(data, clickHandler) {
+    getExpandIcon = (data, clickHandler) => {
         if (data._hasChildren) {
             if (data._showChildren) {
                 return <span className="treegrid-expander"><i className="fa fa-minus" onClick={clickHandler}></i></span>
@@ -30,7 +36,7 @@ class Row extends React.Component {
         return <span className="treegrid-expander"></span>
     }
 
-    clickHandler(event) {
+    clickHandler = (event) => {
         if (this.props.data._hasChildren) {
             this.props.onClick(this.props.data._key, this.props.index);
 			event.stopPropagation();
@@ -41,15 +47,20 @@ class Row extends React.Component {
         return <span className="treegrid-indent" style={{width: level * LEVEL_OFFSET}}></span>
     }
 
-    getContent(field) {
+    getContent = (field, i) => {
         var format = field.format
-	var property = field.property
+		var property = field.property
 
         if (format && typeof format === 'function') {
             return format(this.props.data[property])
         }
 
-        if (this.props.data[property] === null || this.props.data[property] === undefined) {
+		if (field.type !== undefined && field.type == 'button') {
+			return <button type="button" class="btn btn-primary" data-col={i} onClick={this.btnCallback}>{field.caption}</button>
+		}
+
+        if (this.props.data[property] === null 
+		    || this.props.data[property] === undefined) {
             return ''
         }
 
@@ -81,14 +92,14 @@ class Row extends React.Component {
                     <div>
                         {offset}
                         {expandIcon}
-                        {this.getContent(field)}
+                        {this.getContent(field, i)}
                     </div>
                 </td>
             )
         })
 
         return (
-        <tr onClick= {this.callback}>
+        <tr onClick = {this.callback}>
             {items}
         </tr>
         )

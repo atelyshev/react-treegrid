@@ -12,7 +12,7 @@ export default (props) => {
 
                 return (
                     <th style={{width: elem.width}} key={`header_${i}_${uuid.v4()}`} >
-                       {elem.displayName}
+                       {elem.colHeader}
                     </th>
                 )
             })}
