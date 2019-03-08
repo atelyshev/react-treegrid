@@ -14,7 +14,7 @@ Installation
 -----
  
 ```
-npm install react-gridtree
+npm install react-treegrid
 ```
 
 Usage
