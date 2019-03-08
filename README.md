@@ -1,6 +1,6 @@
 ﻿React-GridTree
 ===================
-
+This is improved version of original react-gridtree. I just added onClick reaction which makes thhat grid useful.
 React GridTree is a react component built to easily render a table showing the properties of objects in a tree structure.
 
 Check out the [example project](https://github.com/PhillBeck/react-gridtree-example) and the [live demo](https://phillbeck.github.io/react-gridtree-example/)
@@ -63,6 +63,13 @@ Example:
 
 Props
 ----------
+**callback**
+If you need on click reaction then attach callback. It will return data section related with current row.
+  onRowClick = (data) => {
+    alert(data);
+  }
+
+callback={this.onRowClick}
 
 **data**
 Data to be displayed. Should be an array of objects. Each object's `children` property should be an array of nested objects.
