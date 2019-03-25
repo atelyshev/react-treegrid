@@ -61,7 +61,7 @@ class Body extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        if (!equal(this.props, nextProps)) {
+        if (!equal(this.props.data, nextProps.data)) {
             this.setState({dataToDisplay: this.flattenArray(nextProps.data)})
 	}
     }
@@ -75,24 +75,28 @@ class Body extends React.Component {
         }
 
         var level = parent._level === undefined ? 0 : parent._level + 1
+		
+		if (DataArray instanceof Array) {
+			DataArray.forEach((element) => {
+				let elemToAdd = {
+					...element,
+					_hasChildren: element._hasChildren || false,
+					_level: level,
+					_parent: parent._key,
+					_key: element._key || UUID.v4(),
+					_showChildren: element._showChildren || false,
+					_visible: parent._showChildren || true
+				}
 
-        DataArray.forEach((element) => {
-            let elemToAdd = {
-                ...element,
-                _hasChildren: element._hasChildren || false,
-                _level: level,
-                _parent: parent._key,
-                _key: element._key || UUID.v4(),
-                _showChildren: element._showChildren || false,
-                _visible: parent._showChildren || true
-            }
-
-            returnArray.push(elemToAdd)
-            if (element.children && element.children.constructor === Array) {
-                elemToAdd._hasChildren = true
-            }
-        });
-
+				returnArray.push(elemToAdd)
+				if (element.children && element.children.constructor === Array) {
+					elemToAdd._hasChildren = true
+				}
+			});
+		}
+		else{
+			returnArray.push(DataArray);
+		}
         return returnArray
     }
 

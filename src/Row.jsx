@@ -55,7 +55,7 @@ class Row extends React.Component {
             return format(this.props.data[property])
         }
 
-		if (field.type !== undefined && field.type == 'button') {
+		if (field.type !== undefined && field.type === 'button') {
 			return <button type="button" class="btn btn-primary" data-col={i} onClick={this.btnCallback}>{field.caption}</button>
 		}
 
